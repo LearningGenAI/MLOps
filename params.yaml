@@ -1,0 +1,27 @@
+#This Yaml file is for computation
+base:
+  project: ehr_mlops
+  random_state: 20
+  target_col: SOURCE
+#1st stage- we are provide data source, load the data
+data_source:
+  ehr_source: data/raw/EHR_processed.csv
+
+load_data:
+  raw_dataset_csv: data/raw/EHR_processed.csv
+#2nd stage-  We split data for testing & training
+split_data: 
+  train_path: data/processed/train_EHR.csv
+  test_path: data/processed/train_EHR.csv
+  test_size: 0.2 #test size can be anything. There is no restriction to that.
+
+#3rd stage- Now we will pass the ML model here by giving it algorithm
+
+estimator: 
+  Elasticnet:      #Elasticnet is as algorithm, this comes under scikit-learn model. This algorithm can be changed anytime & we can re-train the model.
+    params:        
+      alpha: 0.7  #alpha value should be between 0 to 1.Refer below link for all kinf of parameters.
+      l1_ratio: 0.8  #l1_ratio 0.5 will be by default but the rage should be between 0 to 1.
+#https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.ElasticNet.html#sklearn.linear_model.ElasticNet
+#now with all the above steps, model is ready. We need to save this model by using below steps
+model_dirs: models/models.sav #.sav or .pkl is used as extensions for saving the models.

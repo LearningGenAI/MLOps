@@ -1,4 +1,4 @@
-#This Yaml file is for computation
+#This Yaml file is for computation. Yaml is a data interpreter.
 base:
   project: ehr_mlops
   random_state: 20
@@ -12,7 +12,7 @@ load_data:
 #2nd stage-  We split data for testing & training
 split_data: 
   train_path: data/processed/train_EHR.csv
-  test_path: data/processed/train_EHR.csv
+  test_path: data/processed/test_EHR.csv
   test_size: 0.2 #test size can be anything. There is no restriction to that.
 
 #3rd stage- Now we will pass the ML model here by giving it algorithm
@@ -24,4 +24,18 @@ estimator:
       l1_ratio: 0.8  #l1_ratio 0.5 will be by default but the rage should be between 0 to 1.
 #https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.ElasticNet.html#sklearn.linear_model.ElasticNet
 #now with all the above steps, model is ready. We need to save this model by using below steps
+
 model_dirs: models/models.sav #.sav or .pkl is used as extensions for saving the models.
+#we will not do hyper-parameter tuning using static method. For ex:- Any error occuring in ML model. it can be rectified in Yaml file itself.
+#Now we need to create automation reports in JSON format, of the model which we have designed.
+
+reports: 
+   params: reports/params.json
+   score: reports/scores.json
+
+mlflow_config:
+  aritifacts_dir: artifacts
+  experiments_name: Elastic_Net
+  run_name: mlops
+  registered_model: ElasticNetEHR
+  remote_server_uri: 127.0.0.1/5000 #for MLOps, port:5000 is the default. 

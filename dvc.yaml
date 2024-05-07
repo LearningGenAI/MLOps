@@ -5,8 +5,8 @@ stages: #this is stage 1 - staging
   load_data: 
     cmd: python src/load_data.py --config=params.yaml
     deps: #this is dependencies
-      - src/get_data.py
-      - src/load_dat.py
+      - src/get_data.py #we need to create this get & load data.py files. 55:46 timeline
+      - src/load_data.py
       - source_data/EHR.csv #this is data location
 
     outs:
@@ -42,7 +42,10 @@ stages: #this is stage 1 - staging
         cache: false 
       - reports/params.json
         cache: false
-        
+    
+    outs:
+      - models/model.joblib #joblib is an extension to save regression based model. This extension works on serialised technique.
+                            #for deeplearning we will use extension called .h5
 
       
   

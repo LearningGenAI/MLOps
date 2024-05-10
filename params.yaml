@@ -20,7 +20,7 @@ estimators:
       alpha: 0.9
       l1_ratio: 0.9
 
-model_dirs: models/models.joblib
+model_dirs: models/models.joblib #the models will be saved in .joblib extention
 
 # reports:
 #   params: reports/params.json

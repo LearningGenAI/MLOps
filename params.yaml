@@ -22,9 +22,9 @@ estimators:
 
 model_dirs: models/models.joblib #the models will be saved in .joblib extention
 
-# reports:
-#   params: reports/params.json
-#   score: reports/scores.json
+reports:
+  params: reports/params.json
+  score: reports/scores.json
 
 mlflow_config:
   artificats_dir: artifacts

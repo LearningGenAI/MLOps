@@ -42,7 +42,7 @@ def train_and_evaluate(config_path):
 
     train_y = train[target]#train & test_y is nothing but target column
     test_y = test[target]
-    print("Unique values in train_y:", train_y.unique())
+    # print("Unique values in train_y:", train_y.unique())
 
  #######################step4###########################################
   #lr is linear regrestion
@@ -75,7 +75,6 @@ def train_and_evaluate(config_path):
         score = {
             "alpha" : alpha,
             "l1_ratio" : l1_ratio,
-            "r2" : r2
         }
         json.dump(score, f, indent=4)
    

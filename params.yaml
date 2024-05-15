@@ -17,8 +17,8 @@ split_data:
 estimators:
   ElasticNet:
     params:
-      alpha: 0.9
-      l1_ratio: 0.9
+      alpha: 0.5
+      l1_ratio: 0.7
 
 model_dirs: models/models.joblib #the models will be saved in .joblib extention
 
@@ -28,7 +28,7 @@ reports:
 
 mlflow_config:
   artificats_dir: artifacts
-  experiment_name: ElasticNet
+  experiment_name: ElasticNet_new
   run_name: mlops
-  registered_model_name: ElasticNet
+  registered_model_name: ElasticNet_new
   remote_server_uri: http://127.0.0.1:5000
